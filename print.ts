@@ -1,11 +1,11 @@
 import { encode } from "https://deno.land/std/encoding/utf8.ts"
 
-export function print(...args: string[]) {
+export async function print(...args: string[]) {
     let out_str = args.join(" ");
-    Deno.stdout.write(encode(out_str));
+    await Deno.stdout.write(encode(out_str));
 }
 
-export function println(...args: string[]) {
-    print(...args);
-    print('\n');
+export async function println(...args: string[]) {
+    await print(...args);
+    await print('\n');
 }
